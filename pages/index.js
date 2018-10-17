@@ -15,7 +15,7 @@ const Home = () => (
     
         <div className="w3-white w3-text-grey w3-card-4">
           <div className="w3-display-container">
-            <img src="/w3images/avatar_hat.jpg" style={{width:'100%'}} alt="Avatar" />
+            <img src="https://picsum.photos/200/200" style={{width:'100%'}} alt="Avatar" />
             <div className="w3-display-bottomleft w3-container w3-text-black">
               <h2>Jane Doe</h2>
             </div>
