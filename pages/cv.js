@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import kutik from '../static/kutik';
 import Head from '../components/head';
 import UserCard from '../components/organisms/userCard';
+import JobCard from '../components/organisms/jobCard';
 
 
 class CVPage extends Component{
@@ -19,8 +20,11 @@ class CVPage extends Component{
                 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
                 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+                <link rel="stylesheet" href="/static/cv.css" />
                 </Head>
                 <UserCard user={this.state.user} />
+                <br />
+                <JobCard work={this.state.user.work} />
             </div>
         );
     }
