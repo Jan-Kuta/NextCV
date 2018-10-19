@@ -1,0 +1,39 @@
+body{
+    background-color: #f1f1f1;
+}
+
+.w3-content {
+    max-width: 1400px;
+}
+
+.w3-row-padding {
+    display: flex;
+}
+
+.w3-third {
+    flex: 1;
+}
+
+.w3-twothird {
+    flex: 2;
+}
+
+.full-height {
+    height: 100%
+}
+
+.flex-column {
+    flex-direction: column;
+    display: flex;
+}
+
+.rest-height {
+    flex: 2;
+}
+
+@media only screen and (max-width: 600px) {
+    .w3-row-padding, .w3-twothird, .w3-third { 
+        display: block;
+        width: 100%;
+    }
+}
