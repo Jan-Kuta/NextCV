@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import kutik from '../static/kutik';
 import Head from '../components/head';
-import UserCard from '../components/organisms/userCard';
-import JobCard from '../components/organisms/jobCard';
-import EducationCard from '../components/organisms/educationCard';
+import CVTemplate from '../components/templates/cvTemplate';
 
 
 class CVPage extends Component{
@@ -22,12 +20,8 @@ class CVPage extends Component{
                 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                 <link rel="stylesheet" href="/static/cv.css" />
-                </Head>
-                <UserCard user={this.state.user} />
-                <br />
-                <JobCard work={this.state.user.work} />
-                <br />
-                <EducationCard education={this.state.user.education} />
+                </Head>            
+                <CVTemplate user={this.state.user} />
             </div>
         );
     }
