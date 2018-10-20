@@ -76,7 +76,7 @@ export default {
             startDate:"2014-01-01",
             endDate:"2015-01-01",
             company:"Vlastní projekt",
-            position:null,
+            position:"Full stack developer",
             type:null,
             address:null,
             webpage:null,
