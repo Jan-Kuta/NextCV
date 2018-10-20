@@ -4,6 +4,7 @@ import kutik from '../static/kutik';
 import Head from '../components/head';
 import UserCard from '../components/organisms/userCard';
 import JobCard from '../components/organisms/jobCard';
+import EducationCard from '../components/organisms/educationCard';
 
 
 class CVPage extends Component{
@@ -25,6 +26,8 @@ class CVPage extends Component{
                 <UserCard user={this.state.user} />
                 <br />
                 <JobCard work={this.state.user.work} />
+                <br />
+                <EducationCard education={this.state.user.education} />
             </div>
         );
     }

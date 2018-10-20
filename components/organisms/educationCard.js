@@ -1,14 +1,10 @@
 import React from 'react';
-import SkillList from '../molecules/skillList';
-import UserInfo from '../molecules/userInfo';
+import SchoolList from '../molecules/schoolList';
 
-const UserCard = ({ user }) => (
-    <div className="w3-white w3-text-grey w3-card-4" style={{height: '100%'}}>
-        <UserInfo user={user} />
-        <hr />
-        <SkillList skills={user.skills} />
-        <br />
+const EducationCard = ({ education }) => (
+    <div className="w3-container w3-card w3-white rest-height">
+        <SchoolList education={education} />
     </div>
 );
 
-export default UserCard;
+export default EducationCard;

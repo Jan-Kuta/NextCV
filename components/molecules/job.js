@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Job extends Component {
     formatDate(dateStr) {
         if (!dateStr) {
-            return (<span className="w3-tag w3-teal w3-round">Current</span>);
+            return (<span className="w3-tag w3-teal w3-round">Nyní</span>);
         }
         const date = new Date(dateStr);
         
