@@ -2,6 +2,10 @@ body{
     background-color: #f1f1f1;
 }
 
+.nav-filler {
+    margin-top: 50px;
+}
+
 .w3-content {
     max-width: 1400px;
 }

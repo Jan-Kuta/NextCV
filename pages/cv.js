@@ -14,7 +14,7 @@ class CVPage extends Component{
 
     render() {
         return (
-            <div className="w3-content w3-margin-top w3-margin-bottom" style={{maxWidth:'1400px'}}>
+            <div>
                 <Head title="CV">
                 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
                 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
