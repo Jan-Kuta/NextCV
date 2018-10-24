@@ -33,7 +33,7 @@
 
 .formContainer {
   min-height: 200px;
-  width: 416px;
+  max-width: 420px;
   margin: 14px auto;
   margin-bottom: 0;
   padding: 33px 15px 15px 15px;

@@ -113,7 +113,7 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
     const spacer = <div style={{ marginBottom: '.5rem'}}></div>;
 
     return (
-      <div className={`inputCheckbox ${this.props.customBootstrapClass || 'col-md-3'}`}>
+      <div className={`inputCheckbox ${this.props.customBootstrapClass || 'w3-col m-3'}`}>
         <div className="form-check">
           {title}
             <label className={`checkboxLabel form-check-label`} htmlFor={this.props.name}>
@@ -144,16 +144,14 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
     }
 
     return (
-      <div className={`input ${this.props.customBootstrapClass || 'col-md-6'}`}>
+      <div className={`input ${this.props.customBootstrapClass || 'w3-col m-6'}`}>
         <label htmlFor={this.props.name}>
           {this.props.label}
         </label>
         <div className="input-group input inputEmail" style={{ marginBottom: '1rem'}}>
           <span className="input-group-addon addonEmail" />
           <input
-            className={`form-control ${!this.props.deactivateErrorHighlight && !isEmpty(this.state.errors) ? `form-control-danger is-invalid error`: ''}`}
-            onChange={this.props.onChange}
-            value={this.props.value}
+            className={`w3-input form-control ${!this.props.deactivateErrorHighlight && !isEmpty(this.state.errors) ? `form-control-danger is-invalid error`: ''}`}
             name={this.props.name}
             id={this.props.label}
             onBlur={this.handleBlurEmail}
@@ -186,14 +184,12 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
     const type = this.state.showPassword ? 'text' : 'password';
 
     return (
-      <div className={`input ${this.props.customBootstrapClass || 'col-md-6'}`}>
+      <div className={`input ${this.props.customBootstrapClass || 'w3-col m-6'}`}>
         <label htmlFor={this.props.name}>
           {upperFirst(this.props.label)}
         </label>
           <input
-            className={`form-control ${!this.props.deactivateErrorHighlight && !isEmpty(this.state.errors) ? 'is-invalid': ''}`}
-            onChange={this.props.onChange}
-            value={this.props.value}
+            className={`w3-input form-control ${!this.props.deactivateErrorHighlight && !isEmpty(this.state.errors) ? 'is-invalid': ''}`}
             name={this.props.name}
             id={this.props.label}
             onBlur={this.handleBlur}
@@ -209,9 +205,6 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
         </div>
         {this.renderErrors()}
         {spacer}
-        <div className="insideInput" onClick={this.handleShowPassword} style={color}>
-          <i className="fa fa-eye" />
-        </div>
       </div>
     );
   }
@@ -236,17 +229,15 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
     }
 
     return (
-      <div className={`input ${this.props.customBootstrapClass || 'col-md-6'}`}>
+      <div className={`${this.props.customBootstrapClass || 'w3-col m-6'}`}>
         <label htmlFor={this.props.name}>{this.props.label}</label>
         <input
           name={this.props.name}
           id={this.props.label}
           onBlur={this.handleBlur}
           onFocus={this.props.onFocus}
-          onChange={this.props.onChange}
-          value={inputValue}
           type={this.props.type}
-          className={`form-control ${!isEmpty(this.state.errors) ? 'is-invalid': ''}`}
+          className={`w3-input form-control ${!isEmpty(this.state.errors) ? 'is-invalid': ''}`}
           placeholder={this.props.placeholder}
           disabled={this.props.disabled}
           autoFocus={this.props.autoFocus}

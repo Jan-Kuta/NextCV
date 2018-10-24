@@ -73,12 +73,14 @@ export class AuthPage extends React.Component { // eslint-disable-line react/pre
       <div className="authPage">
       <Head>
       <link rel="stylesheet" href="/static/auth.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
       </Head>
         <div className="wrapper">
           <div className="formContainer">
             <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-12">
+              <div className="w3-row">
+                <div className="w3-col m-12">
                   {providers.map(provider => <SocialLink provider={provider} key={provider} />)}
                 </div>
               </div>
@@ -88,7 +90,7 @@ export class AuthPage extends React.Component { // eslint-disable-line react/pre
                   this.props.submit();
                 }}
               >
-                <div className="row" style={{ textAlign: 'start' }}>
+                <div className="w3-row" style={{ textAlign: 'start' }}>
                   {map(inputs, (input, key) => (
                     <Input
                       autoFocus={key === 0}
@@ -98,14 +100,12 @@ export class AuthPage extends React.Component { // eslint-disable-line react/pre
                       key={get(input, 'name')}
                       label={get(input, 'label')}
                       name={get(input, 'name')}
-                      onChange={this.props.onChange}
                       placeholder={get(input, 'placeholder')}
                       type={get(input, 'type')}
                       validations={{ required: true }}
-                      value={get(this.props.modifiedData, get(input, 'name'))}
                     />
                   ))}
-                  <div className="col-md-12 buttonContainer">
+                  <div className="w3-col m-12 buttonContainer">
                     <Button
                       label="Submit"
                       style={{ width: '100%' }}

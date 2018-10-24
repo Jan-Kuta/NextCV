@@ -1,7 +1,7 @@
 {
   "forgot-password": [
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Enter your email",
       "name": "email",
       "type": "email",
@@ -10,20 +10,20 @@
   ],
   "login": [
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Username",
       "name": "identifier",
       "type": "text",
       "placeholder": "johndoe@gmail.com"
     },
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Password",
       "name": "password",
       "type": "password"
     },
     {
-      "customBootstrapClass": "col-md-6",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Remember me",
       "name": "rememberMe",
       "type": "checkbox"
@@ -31,26 +31,26 @@
   ],
   "register": [
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Username",
       "name": "username",
       "type": "text",
       "placeholder": "Bob"
     },
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Password",
       "name": "password",
       "type": "password"
     },
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Confirm Password",
       "name": "confirmPassword",
       "type": "password"
     },
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "label": "Email",
       "name": "email",
       "placeholder": "johndoe@gmail.com",
@@ -59,13 +59,13 @@
   ],
   "reset-password": [
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "name": "password",
       "type": "password",
       "label": "Password"
     },
     {
-      "customBootstrapClass": "col-md-12",
+      "customBootstrapClass": "w3-col m-12",
       "name": "passwordConfirmation",
       "type": "password",
       "label": "Confirm Password"
