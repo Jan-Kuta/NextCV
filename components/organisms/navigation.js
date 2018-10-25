@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import Link from 'next/link';
 
 class Navigation extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            isAuthenticated: true
+            isAuthenticated: false
         };
     }
 
@@ -25,8 +26,8 @@ class Navigation extends Component {
                             )}
                             {!isAuthenticated && (
                                 <span>
-                                    <a href="/neco" className="w3-bar-item w3-button w3-right">Log in</a>
-                                    <a href="/new" className="w3-bar-item w3-button w3-right">Sign in</a>
+                                    <Link href="/auth?authType=login"><a className="w3-bar-item w3-button w3-right">Log in</a></Link>
+                                    <Link href="/auth?authType=register"><a className="w3-bar-item w3-button w3-right">Sign in</a></Link>
                                 </span>
                             )}
                         </div>

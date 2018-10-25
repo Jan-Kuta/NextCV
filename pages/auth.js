@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import {withRouter} from 'next/router'
 import { get, map, replace } from 'lodash';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ import Input from '../components/atoms/input';
 import SocialLink from '../components/atoms/socialLink';
 import Head from '../components/head';
 
-export class AuthPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AuthPage extends Component {
   componentDidMount() {
     this.setForm(this.props);
   }
