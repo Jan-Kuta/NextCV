@@ -4,7 +4,7 @@ import {authenticateProvider} from '../lib/auth';
 
 export class Connect extends Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    authenticateProvider('google', this.props.router.query)
+    authenticateProvider(this.props.router.query.provider, this.props.router.query)
       .then((res) => {
         console.log("OK", res);
         Router.replace('/cv');

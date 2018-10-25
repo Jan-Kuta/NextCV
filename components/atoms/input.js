@@ -57,8 +57,6 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
       value: !this.props.value,
       name: this.props.name,
     };
-
-    this.props.onChange({ target });
   }
 
   handleBlurEmail = (e) => {

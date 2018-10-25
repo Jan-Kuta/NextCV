@@ -6,10 +6,11 @@
 
 import React from 'react';
 import Button from './button'
+import { getProviderAuthenticationUrl } from '../../lib/auth';
 
 function SocialLink({ provider }) {
   return (
-    <a href={`http://localhost:1337/connect/${provider}`} className="link">
+    <a href={getProviderAuthenticationUrl(provider)} className="link">
       <Button type="button" social={provider} style={{ width: '100%' }}>
         <i className={`fa fa-${provider} w3-left`} />
         {provider}

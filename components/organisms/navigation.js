@@ -26,8 +26,8 @@ class Navigation extends Component {
                             )}
                             {!isAuthenticated && (
                                 <span>
-                                    <Link href="/auth?authType=login"><a className="w3-bar-item w3-button w3-right">Log in</a></Link>
-                                    <Link href="/auth?authType=register"><a className="w3-bar-item w3-button w3-right">Sign in</a></Link>
+                                    <Link href="/auth?authType=login" as="/auth/login"><a className="w3-bar-item w3-button w3-right">Log in</a></Link>
+                                    <Link href="/auth?authType=register" as="/auth/register"><a className="w3-bar-item w3-button w3-right">Sign in</a></Link>
                                 </span>
                             )}
                         </div>

@@ -5,7 +5,7 @@
  */
 
 import React, {Component} from 'react';
-import {withRouter} from 'next/router'
+import Router, {withRouter} from 'next/router'
 import { get, map, replace } from 'lodash';
 import Link from 'next/link';
 
@@ -14,6 +14,8 @@ import FormDivider from '../components/atoms/formDivider';
 import Input from '../components/atoms/input';
 import SocialLink from '../components/atoms/socialLink';
 import Head from '../components/head';
+import Navigation from '../components/organisms/navigation';
+import { login, register, forgotPassword } from '../lib/auth';
 
 export class AuthPage extends Component {
   componentDidMount() {
@@ -44,24 +46,49 @@ export class AuthPage extends Component {
     if (this.props.router.query.authType === 'login') {
       return (
         <div>
-          <Link href="/auth?authType=forgot-password">
+          <Link href="/auth?authType=forgot-password" as="/auth/forgot-password">
             <a>Forgot Password</a>
-          </Link>
-          &nbsp;or&nbsp;
-          <Link href="/auth?authType=register">
-            <a>register</a>
           </Link>
         </div>
       );
     }
 
-    return (
-      <div>
-        <Link href="/auth?authType=login">
-          <a>Ready to signin</a>
-        </Link>
-      </div>
-    );
+    return null;
+  }
+
+  submit = () => {
+    switch (this.props.router.query.authType){
+      case 'register':
+        register('kutik', 'jan.kuta@email.cz', 'kuticzech')
+          .then((res) => {
+            console.log("registrace", res);
+            Router.push('/cv');
+          }
+          ).catch((err) => 
+            console.error("Chybka", err)
+          )
+        break;
+      case 'login':
+        login('jan.kuta@email.cz', 'kuticzech')
+          .then((res) => {
+            console.log("login", res);
+            Router.push('/cv');
+          }
+          ).catch((err) => 
+            console.error("Chybka", err)
+          );
+        break;
+      case 'forgot-password':
+        forgotPassword('jan.kuta@email.cz')
+          .then((res) => {
+            console.log("forgot-password", res);
+            Router.push('/cv');
+          }
+          ).catch((err) => 
+            console.error("Chybka", err)
+          );
+        break;
+    }
   }
 
   render() {
@@ -71,12 +98,23 @@ export class AuthPage extends Component {
 
     return (
       <div className="authPage">
-      <Head>
-      <link rel="stylesheet" href="/static/auth.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-      </Head>
+        <Head>
+        <link rel="stylesheet" href="/static/auth.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        </Head>
+        <Navigation />
         <div className="wrapper">
+          <div className="headerContainer">
+            {this.props.router.query.authType}
+          </div>
+          <div className="headerDescription">
+            {this.props.router.query.authType === 'register' ? (
+              <span>
+                Please register to create your own CV.
+              </span>
+            ) : ''}
+          </div>
           <div className="formContainer">
             <div className="container-fluid">
               <div className="w3-row">
@@ -87,7 +125,7 @@ export class AuthPage extends Component {
               <FormDivider />
               <form onSubmit={(e) => {
                   e.preventDefault();
-                  this.props.submit();
+                  this.submit();
                 }}
               >
                 <div className="w3-row" style={{ textAlign: 'start' }}>
