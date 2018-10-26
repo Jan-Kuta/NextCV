@@ -57,6 +57,12 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
       value: !this.props.value,
       name: this.props.name,
     };
+
+    this.props.onChange(target.type, target.value, target.name);
+  }
+
+  onChange = (e) => {
+    this.props.onChange('input', e.target.value, e.target.name);
   }
 
   handleBlurEmail = (e) => {
@@ -75,16 +81,6 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
     if (this.props.onFocus) {
       this.props.onFocus(e);
     }
-  }
-
-  handleToggle = (e) => {
-    const target = {
-      type: 'toggle',
-      name: this.props.name,
-      value: e.target.id === 'on',
-    }
-
-    this.props.onChange({ target });
   }
 
   handleShowPassword = () => this.setState({ showPassword: !this.state.showPassword });
@@ -154,6 +150,8 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
             id={this.props.label}
             onBlur={this.handleBlurEmail}
             onFocus={this.handleFocusEmail}
+            onChange={this.onChange}
+            value={this.props.value}
             placeholder={this.props.label || this.props.placeholder}
             disabled={this.props.disabled}
             type="email"
@@ -192,6 +190,8 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
             id={this.props.label}
             onBlur={this.handleBlur}
             onFocus={this.props.onFocus}
+            onChange={this.onChange}
+            value={this.props.value}
             placeholder={this.props.placeholder || this.props.label}
             disabled={this.props.disabled}
             type={type}
@@ -234,6 +234,8 @@ class Input extends React.Component { // eslint-disable-line react/prefer-statel
           id={this.props.label}
           onBlur={this.handleBlur}
           onFocus={this.props.onFocus}
+          onChange={this.onChange}
+          value={this.props.value}
           type={this.props.type}
           className={`w3-input form-control ${!isEmpty(this.state.errors) ? 'is-invalid': ''}`}
           placeholder={this.props.placeholder}

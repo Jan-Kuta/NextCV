@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import Router, {withRouter} from 'next/router'
-import { get, map, replace } from 'lodash';
+import { get, map } from 'lodash';
 import Link from 'next/link';
 
 import Button from '../components/atoms/button';
@@ -18,6 +18,20 @@ import Navigation from '../components/organisms/navigation';
 import { login, register, forgotPassword, resetPassword } from '../lib/auth';
 
 export class AuthPage extends Component {
+  constructor(props){
+    super(props);
+    this.state = this.initState();
+  }
+
+  initState = () => {
+    const authForm = require('../static/authForm.json');
+    const inputs = get(authForm, this.props.router.query.authType) || [];
+    return inputs.reduce((acc, input) => {
+      acc[input.name] = input.value;
+      return acc;
+    }, {});
+  }
+
   componentDidMount() {
     this.setForm(this.props);
   }
@@ -59,7 +73,11 @@ export class AuthPage extends Component {
   submit = () => {
     switch (this.props.router.query.authType){
       case 'register':
-        register('kutik', 'jan.kuta@email.cz', 'kuticzech')
+        if (this.state.password != this.state.confirmPassword){
+          this.setState({error: 'Passwords do not match!'})
+          return;
+        }
+        register(this.state.username, this.state.email, this.state.password)
           .then((res) => {
             console.log("registrace", res);
             Router.push('/cv');
@@ -69,7 +87,7 @@ export class AuthPage extends Component {
           )
         break;
       case 'login':
-        login('jan.kuta@email.cz', 'kuticzech')
+        login(this.state.identifier, this.state.password)
           .then((res) => {
             console.log("login", res);
             Router.push('/cv');
@@ -79,7 +97,7 @@ export class AuthPage extends Component {
           );
         break;
       case 'forgot-password':
-        forgotPassword('jan.kuta@email.cz')
+        forgotPassword(this.state.email)
           .then((res) => {
             console.log("forgot-password", res);
             // Router.push('/cv');
@@ -89,7 +107,7 @@ export class AuthPage extends Component {
           );
         break;
       case 'reset-password':
-        resetPassword(this.props.router.query.code, 'kuticzech', 'kuticzech')
+        resetPassword(this.props.router.query.code, this.state.password, this.state.passwordConfirmation)
           .then((res) => {
             console.log("reset-password", res);
             // Router.push('/cv');
@@ -98,6 +116,12 @@ export class AuthPage extends Component {
             console.error("Chybka", err)
           );
     }
+  }
+
+  onChange = (type, value, name) => {
+    const parametrObj = {}
+    parametrObj[name] = value;
+    this.setState(parametrObj);
   }
 
   render() {
@@ -150,6 +174,8 @@ export class AuthPage extends Component {
                       placeholder={get(input, 'placeholder')}
                       type={get(input, 'type')}
                       validations={{ required: true }}
+                      onChange={this.onChange}
+                      value={this.state[get(input, 'name')]}
                     />
                   ))}
                   <div className="w3-col m-12 buttonContainer">
@@ -164,6 +190,9 @@ export class AuthPage extends Component {
 
               </form>
             </div>
+          </div>
+          <div className="headerContainer w3-text-red">
+            {this.state.error}
           </div>
           <div className="linkContainer">
           {this.renderLink()}

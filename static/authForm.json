@@ -5,6 +5,7 @@
       "label": "Enter your email",
       "name": "email",
       "type": "email",
+      "value": "",
       "placeholder": "johndoe@gmail.com"
     }
   ],
@@ -14,19 +15,22 @@
       "label": "Username",
       "name": "identifier",
       "type": "text",
+      "value": "",
       "placeholder": "johndoe@gmail.com"
     },
     {
       "customBootstrapClass": "w3-col m-12",
       "label": "Password",
       "name": "password",
-      "type": "password"
+      "type": "password",
+      "value": ""
     },
     {
       "customBootstrapClass": "w3-col m-12",
       "label": "Remember me",
       "name": "rememberMe",
-      "type": "checkbox"
+      "type": "checkbox",
+      "value": false
     }
   ],
   "register": [
@@ -35,24 +39,28 @@
       "label": "Username",
       "name": "username",
       "type": "text",
+      "value": "",
       "placeholder": "Bob"
     },
     {
       "customBootstrapClass": "w3-col m-12",
       "label": "Password",
       "name": "password",
-      "type": "password"
+      "type": "password",
+      "value": ""
     },
     {
       "customBootstrapClass": "w3-col m-12",
       "label": "Confirm Password",
       "name": "confirmPassword",
-      "type": "password"
+      "type": "password",
+      "value": ""
     },
     {
       "customBootstrapClass": "w3-col m-12",
       "label": "Email",
       "name": "email",
+      "value": "",
       "placeholder": "johndoe@gmail.com",
       "type": "email"
     }
@@ -62,13 +70,15 @@
       "customBootstrapClass": "w3-col m-12",
       "name": "password",
       "type": "password",
-      "label": "Password"
+      "label": "Password",
+      "value": ""
     },
     {
       "customBootstrapClass": "w3-col m-12",
       "name": "passwordConfirmation",
       "type": "password",
-      "label": "Confirm Password"
+      "label": "Confirm Password",
+      "value": ""
     }
   ]
 }
