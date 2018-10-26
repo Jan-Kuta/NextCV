@@ -11,13 +11,13 @@ app.prepare()
 
   server.get('/connect/:provider', (req, res) => {
     const actualPage = '/connect'
-    const queryParams = { provider: req.params.provider } 
+    const queryParams = { ...req.query, provider: req.params.provider } 
     app.render(req, res, actualPage, queryParams)
   })
 
   server.get('/auth/:authType', (req, res) => {
     const actualPage = '/auth'
-    const queryParams = { authType: req.params.authType } 
+    const queryParams = { ...req.query, authType: req.params.authType } 
     app.render(req, res, actualPage, queryParams)
   })
 

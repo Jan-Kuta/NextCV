@@ -15,7 +15,7 @@ import Input from '../components/atoms/input';
 import SocialLink from '../components/atoms/socialLink';
 import Head from '../components/head';
 import Navigation from '../components/organisms/navigation';
-import { login, register, forgotPassword } from '../lib/auth';
+import { login, register, forgotPassword, resetPassword } from '../lib/auth';
 
 export class AuthPage extends Component {
   componentDidMount() {
@@ -82,12 +82,21 @@ export class AuthPage extends Component {
         forgotPassword('jan.kuta@email.cz')
           .then((res) => {
             console.log("forgot-password", res);
-            Router.push('/cv');
+            // Router.push('/cv');
           }
           ).catch((err) => 
             console.error("Chybka", err)
           );
         break;
+      case 'reset-password':
+        resetPassword(this.props.router.query.code, 'kuticzech', 'kuticzech')
+          .then((res) => {
+            console.log("reset-password", res);
+            // Router.push('/cv');
+          }
+          ).catch((err) => 
+            console.error("Chybka", err)
+          );
     }
   }
 
