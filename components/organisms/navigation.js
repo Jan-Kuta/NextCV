@@ -1,17 +1,44 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
+import { getUserFromServerCookie, getUserFromLocalCookie, unsetToken} from '../../lib/auth';
 
 class Navigation extends Component {
     constructor(props){
         super(props);
 
-        this.state = {
-            isAuthenticated: false
+        this.state = this.getStateFromCookie();
+    }
+
+    getStateFromCookie = () => {
+        const loggedUser = getUserFromLocalCookie()
+        return {
+            isAuthenticated: !!loggedUser,
+            loggedUser
         };
     }
 
+    static async getInitialProps({ req }) {
+        const loggedUser = process.browser
+            ? getUserFromLocalCookie()
+            : getUserFromServerCookie(req);
+        console.log("is authenticated");
+        console.log(loggedUser);
+        let path = req ? req.pathname : "";
+        path = "";
+        return {
+            loggedUser,
+            currentUrl: path,
+            isAuthenticated: !!loggedUser
+        };
+    }
+
+    logout = () => {
+        unsetToken();
+        this.setState(this.getStateFromCookie());
+    }
+
     render() {
-        const { isAuthenticated } = this.state;
+        const { isAuthenticated, loggedUser } = this.state;
         return (
             <React.Fragment>
                 <div className="w3-top">
@@ -20,8 +47,8 @@ class Navigation extends Component {
                         <div>
                             {isAuthenticated && (
                                 <span>
-                                    <a className="w3-bar-item w3-button w3-right">Log Out</a>
-                                    <span className="w3-bar-item w3-right">Hello, user</span>
+                                    <a className="w3-bar-item w3-button w3-right" onClick={this.logout}>Log Out</a>
+                                    <span className="w3-bar-item w3-right">Hello, {loggedUser}</span>
                                 </span>
                             )}
                             {!isAuthenticated && (
