@@ -32,26 +32,6 @@ export class AuthPage extends Component {
     }, {});
   }
 
-  componentDidMount() {
-    this.setForm(this.props);
-  }
-
-  componentWillUpdate(nextProps) {
-    // Update the form depending on the URL's params
-    if (nextProps.router.query.authType !== this.props.router.query.authType) {
-      this.setForm(nextProps);
-    }
-  }
-
-  /**
-   * Create the form depending on the URL
-   * @param {Object} props
-   */
-  setForm = (props) => {
-    //const params = props.location.search ? replace(props.location.search, '?code=', '') : props.match.params.id;
-    //this.props.setForm(props.authType, params);
-  }
-
   /**
    * Check the URL's params to render the appropriate links
    * @return {Element} Returns navigation links
@@ -80,40 +60,38 @@ export class AuthPage extends Component {
         register(this.state.username, this.state.email, this.state.password)
           .then((res) => {
             console.log("registrace", res);
-            Router.push('/cv');
+            Router.push('/auth/login');
           }
           ).catch((err) => 
-            console.error("Chybka", err)
+            this.setState({error: err.message})
           )
         break;
       case 'login':
         login(this.state.identifier, this.state.password)
           .then((res) => {
             console.log("login", res);
-            Router.push('/cv');
           }
           ).catch((err) => 
-            console.error("Chybka", err)
+            this.setState({error: err.message})
           );
         break;
       case 'forgot-password':
         forgotPassword(this.state.email)
           .then((res) => {
             console.log("forgot-password", res);
-            // Router.push('/cv');
           }
           ).catch((err) => 
-            console.error("Chybka", err)
+            this.setState({error: err.message})
           );
         break;
       case 'reset-password':
         resetPassword(this.props.router.query.code, this.state.password, this.state.passwordConfirmation)
           .then((res) => {
             console.log("reset-password", res);
-            // Router.push('/cv');
+            Router.push('/auth/login');
           }
           ).catch((err) => 
-            console.error("Chybka", err)
+            this.setState({error: err.message})
           );
     }
   }
@@ -191,9 +169,11 @@ export class AuthPage extends Component {
               </form>
             </div>
           </div>
-          <div className="headerContainer w3-text-red">
-            {this.state.error}
-          </div>
+          {this.state.error && (
+            <div className="w3-container w3-padding w3-text-red">
+              {this.state.error}
+            </div>
+          )}
           <div className="linkContainer">
           {this.renderLink()}
         </div>
