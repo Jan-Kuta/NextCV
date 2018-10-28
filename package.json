@@ -12,6 +12,11 @@
     "next": "^7.0.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1",
+    "redux-form": "^7.4.2",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0",
     "strapi-sdk-javascript": "^0.3.0"
   }
 }

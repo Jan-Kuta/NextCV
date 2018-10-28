@@ -2,7 +2,7 @@ import React, {Component}  from 'react';
 import Router, {withRouter} from 'next/router'
 import {authenticateProvider, setToken} from '../lib/auth';
 
-export class Connect extends Component { // eslint-disable-line react/prefer-stateless-function
+export class Connect extends Component {
   componentDidMount() {
     authenticateProvider(this.props.router.query.provider, this.props.router.query)
       .then((res) => {
