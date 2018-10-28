@@ -15,6 +15,7 @@ import Input from '../components/atoms/input';
 import SocialLink from '../components/atoms/socialLink';
 import Head from '../components/head';
 import Navigation from '../components/organisms/navigation';
+import withCookiesInProps from '../components/hoc/cookiesToProps';
 import { login, register, forgotPassword, resetPassword } from '../lib/auth';
 
 export class AuthPage extends Component {
@@ -103,6 +104,7 @@ export class AuthPage extends Component {
   }
 
   render() {
+    const { loggedUser, isAuthenticated} = this.props;
     const authForm = require('../static/authForm.json');
     const inputs = get(authForm, this.props.router.query.authType) || [];
     const providers = ['facebook', 'google']; // To remove a provider from the list just delete it from this array...
@@ -114,7 +116,7 @@ export class AuthPage extends Component {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
         </Head>
-        <Navigation />
+        <Navigation loggedUser={loggedUser} isAuthenticated={isAuthenticated} />
         <div className="wrapper">
           <div className="headerContainer">
             {this.props.router.query.authType}
@@ -183,4 +185,4 @@ export class AuthPage extends Component {
   }
 }
 
-export default withRouter (AuthPage);
+export default withCookiesInProps (withRouter (AuthPage));

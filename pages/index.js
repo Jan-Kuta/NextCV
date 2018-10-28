@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import kutik from '../static/kutik';
 import Head from '../components/head';
 import CVTemplate from '../components/templates/cvTemplate';
-
+import withCookiesInProps from '../components/hoc/cookiesToProps';
 
 class CVPage extends Component{
     constructor(){
@@ -13,6 +13,7 @@ class CVPage extends Component{
     }
 
     render() {
+        const { isAuthenticated, loggedUser } = this.props;
         return (
             <div>
                 <Head title="CV">
@@ -21,10 +22,10 @@ class CVPage extends Component{
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                 <link rel="stylesheet" href="/static/cv.css" />
                 </Head>            
-                <CVTemplate user={this.state.user} />
+                <CVTemplate user={this.state.user} isAuthenticated={isAuthenticated} loggedUser={loggedUser}/>
             </div>
         );
     }
 }
 
-export default CVPage;
+export default withCookiesInProps(CVPage);

@@ -5,9 +5,9 @@ import JobCard from '../organisms/jobCard';
 import EducationCard from '../organisms/educationCard';
 import Navigation from '../organisms/navigation';
 
-const CVTemplate = ({ user }) => (
+const CVTemplate = ({ user, isAuthenticated, loggedUser }) => (
     <React.Fragment>
-        <Navigation />
+        <Navigation isAuthenticated={isAuthenticated} loggedUser={loggedUser}/>
         <div className="navigation">
             <div className="w3-content w3-margin-top w3-margin-bottom">
                 <div className="w3-row-padding">

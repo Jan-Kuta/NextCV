@@ -1,44 +1,16 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
-import { getUserFromServerCookie, getUserFromLocalCookie, unsetToken} from '../../lib/auth';
+import Router from "next/router";
+import { unsetToken} from '../../lib/auth';
 
 class Navigation extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = this.getStateFromCookie();
-    }
-
-    getStateFromCookie = () => {
-        const loggedUser = getUserFromLocalCookie()
-        return {
-            isAuthenticated: !!loggedUser,
-            loggedUser
-        };
-    }
-
-    static async getInitialProps({ req }) {
-        const loggedUser = process.browser
-            ? getUserFromLocalCookie()
-            : getUserFromServerCookie(req);
-        console.log("is authenticated");
-        console.log(loggedUser);
-        let path = req ? req.pathname : "";
-        path = "";
-        return {
-            loggedUser,
-            currentUrl: path,
-            isAuthenticated: !!loggedUser
-        };
-    }
-
     logout = () => {
         unsetToken();
-        this.setState(this.getStateFromCookie());
+        Router.push('/auth/login');
     }
 
     render() {
-        const { isAuthenticated, loggedUser } = this.state;
+        const { isAuthenticated, loggedUser } = this.props;
         return (
             <React.Fragment>
                 <div className="w3-top">
