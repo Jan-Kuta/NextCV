@@ -15,7 +15,7 @@ class Navigation extends Component {
             <React.Fragment>
                 <div className="w3-top">
                     <nav className="w3-bar w3-dark-grey">
-                        <a className="w3-bar-item w3-button w3-black">Next CV</a>
+                        <Link href="/"><a className="w3-bar-item w3-button w3-black">Next CV</a></Link>
                         <div>
                             {isAuthenticated && (
                                 <span>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { getUserFromServerCookie, getUserFromLocalCookie } from '../../lib/auth';
+import { getUserFromServerCookie, getUserFromLocalCookie, getTokenFromServerCookie, getTokenFromLocalCookie } from '../../lib/auth';
 
 const CookiesToProps = (WrappedComponent) => {
   class CookiesToPropsHOC extends Component {
@@ -12,12 +12,17 @@ const CookiesToProps = (WrappedComponent) => {
     const loggedUser = process.browser
         ? getUserFromLocalCookie()
         : getUserFromServerCookie(req);
+    const jwt = process.browser
+        ? getTokenFromLocalCookie()
+        : getTokenFromServerCookie(req);
     console.log("is authenticated");
     console.log(loggedUser);
+    console.log('jwt', jwt);
     
     return {
         loggedUser,
-        isAuthenticated: !!loggedUser
+        isAuthenticated: !!loggedUser,
+        jwt: jwt
     };
   }
     

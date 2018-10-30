@@ -10,7 +10,7 @@ body{
     max-width: 1400px;
 }
 
-.w3-row-padding {
+.w3-row, .w3-row-padding {
     display: flex;
 }
 
@@ -39,6 +39,12 @@ body{
     .w3-row-padding, .w3-twothird, .w3-third { 
         display: block;
         width: 100%;
+        padding: 0;
+    }
+
+    .w3-row-padding > .w3-third,
+    .w3-row-padding > .w3-twothird {
+        padding: 0;
     }
 
     .w3-third {

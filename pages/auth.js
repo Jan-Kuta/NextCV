@@ -71,10 +71,11 @@ export class AuthPage extends Component {
         login(this.state.identifier, this.state.password)
           .then((res) => {
             console.log("login", res);
+            Router.push('/cv');
           }
-          ).catch((err) => 
-            this.setState({error: err.message})
-          );
+          ).catch((err) => {
+            this.setState({error: err.message});
+          });
         break;
       case 'forgot-password':
         forgotPassword(this.state.email)
