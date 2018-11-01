@@ -4,7 +4,7 @@ import { getUserFromServerCookie, getUserFromLocalCookie, getTokenFromServerCook
 const CookiesToProps = (WrappedComponent) => {
   class CookiesToPropsHOC extends Component {
     render() {
-      return <WrappedComponent {...this.props} a={true}/>;
+      return <WrappedComponent {...this.props}/>;
     }
   }
 
