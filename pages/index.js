@@ -29,7 +29,7 @@ WelcomePage.getInitialProps = () => {
                 username
             }
             }
-        `,'aaaaaaaa')
+        `,'aaaaa')
           .then(res => res.json())
           .then(json => json.data.users)
           .then(users => {
